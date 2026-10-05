@@ -1,0 +1,46 @@
+{
+  "name": "squad-of-champions",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "engines": {
+    "node": ">=22 <25",
+    "npm": ">=10 <12"
+  },
+  "scripts": {
+    "dev:frontend": "npm run start --workspace @squad/frontend",
+    "dev:backend": "npm run start:dev --workspace @squad/backend",
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "lint": "npm run lint --workspaces",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "migration:run": "npm run migration:run --workspace @squad/backend",
+    "migration:show": "npm run migration:show --workspace @squad/backend",
+    "migration:revert": "npm run migration:revert --workspace @squad/backend",
+    "seed": "npm run seed --workspace @squad/backend",
+    "test:unit": "npm run test:unit --workspace @squad/backend",
+    "test:database": "npm run test:database --workspace @squad/backend",
+    "test:e2e": "npm run test:e2e --workspace @squad/backend",
+    "config:jwt": "npm run config:jwt --workspace @squad/backend",
+    "test:catalogue": "npm run test:catalogue --workspace @squad/backend",
+    "test:squads": "npm run test:squads --workspace @squad/backend",
+    "test:frontend": "npm test --workspace @squad/frontend -- --watchAll=false --runInBand",
+    "test:frontend:smoke": "npm run test:smoke --workspace @squad/frontend",
+    "test:docker": "node scripts/test-docker.cjs"
+  },
+  "devDependencies": {
+    "@nestjs/swagger": "11.4.7",
+    "eslint": "8.57.1",
+    "prettier": "3.6.2"
+  },
+  "overrides": {
+    "express@4.18.1": "4.22.3",
+    "@nestjs/swagger": {
+      "js-yaml": "5.4.2"
+    }
+  }
+}

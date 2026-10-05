@@ -1,0 +1,50 @@
+{
+  "name": "@squad/backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts --max-warnings 0",
+    "start": "node dist/main.js",
+    "start:dev": "node --watch -r ts-node/register src/main.ts",
+    "migration:run": "ts-node src/database/migration-command.ts run",
+    "migration:show": "ts-node src/database/migration-command.ts show",
+    "migration:revert": "ts-node src/database/migration-command.ts revert",
+    "seed": "ts-node src/database/seed-command.ts",
+    "test:unit": "node --test -r ts-node/register src/database/tests/seed-source.test.ts src/auth/tests/auth.test.ts src/common/tests/errors.test.ts src/catalogue/tests/catalogue.test.ts src/squads/tests/squads.test.ts",
+    "test:database": "node --test -r ts-node/register src/database/tests/database.integration.test.ts",
+    "test:e2e": "node --test -r ts-node/register src/auth/tests/auth.e2e.test.ts",
+    "config:jwt": "ts-node src/config/configure-jwt-command.ts",
+    "test:catalogue": "node --test -r ts-node/register src/catalogue/tests/catalogue.e2e.test.ts",
+    "test:squads": "node --test -r ts-node/register src/squads/tests/squads.e2e.test.ts"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.6",
+    "@nestjs/jwt": "^11.0.1",
+    "@nestjs/platform-express": "^11.1.6",
+    "@nestjs/swagger": "11.4.7",
+    "@nestjs/typeorm": "^11.0.0",
+    "argon2": "^0.44.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "dotenv": "^16.6.1",
+    "ioredis": "^5.11.1",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typeorm": "0.3.31",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
+    "@typescript-eslint/eslint-plugin": "8.71.0",
+    "@typescript-eslint/parser": "8.71.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.9.3"
+  }
+}
